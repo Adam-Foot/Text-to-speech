@@ -1,56 +1,40 @@
 const btn = document.querySelector('.talk');
-const content = document.querySelector('.content');
-
-
-const greetings = [
-    "I'm okay thankyou",
-    "Don't talk to me, I wish to be left alone",
-    "I'm good, are you okay?"
-];
-
-const steven = [
-    "Piss off Steven"
-];
-
+const btnStop = document.querySelector('.talkStop');
+const content = document.querySelector('.speechContent');
+const status = document.querySelector('#speechStatus');
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
+recognition.lang = 'en-UK';
+recognition.continuous = true;
 
 recognition.onstart = function() {
-    console.log("Voice is activated.");
+    document.getElementById("speechStatus").classList.add('text-success');
+    document.getElementById("speechStatus").innerHTML = "listening"
+    document.getElementById("speechStatus").classList.remove('text-danger');
 };
 
 recognition.onresult = function(event) {
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
 
-    console.log(transcript);
+    
     content.textContent = transcript;
-    readOutLoud(transcript);
 };
+
+recognition.onend = function() {
+    document.getElementById("speechStatus").classList.add('text-danger');
+    document.getElementById("speechStatus").innerHTML = "not listening"
+    document.getElementById("speechStatus").classList.remove('text-success');
+}
 
 btn.addEventListener('click', () => {
     recognition.start();
 });
 
-
-function readOutLoud(message) {
-    const speech = new SpeechSynthesisUtterance();
-
-    if(message.includes('how are you')) {
-        const finalText = greetings[Math.floor(Math.random() * greetings.length)];
-        speech.text = finalText;
-    }
-
-    if(message.includes('my name is Steven')) {
-        const steveText = steven[Math.floor(Math.random() * steven.length)];
-        speech.text = steveText;
-    }
-
-    speech.text = message;
-    speech.volume = 1;
-    speech.rate = 1;
-    speech.pitch = 1; 
-
-    window.speechSynthesis.speak(speech);
-};
+btnStop.addEventListener('click', () => {
+    recognition.stop();
+    document.getElementById("speechStatus").classList.add('text-danger');
+    document.getElementById("speechStatus").innerHTML = "not listening"
+    document.getElementById("speechStatus").classList.remove('text-success');
+});

@@ -4,12 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <title>Speech Recognition</title>
 </head>
 <body>
-    <button class="talk">Talk</button>
-    <h3 class="content"></h3>
 
-    <script src="js/app.js"></script>
+<div class="container mt-3">
+    <div class="row justify-content-center mb-4">
+        <div class="col text-center">
+            <h5 class="display-4 mb-3">Text-To-Speech</h5>
+            <p>Please press the talk button below and speak into your microphone clearly.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <button class="btn btn-warning talk mb-3">Talk</button>
+            <button class="btn btn-warning talkStop mb-3">Stop</button>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+        <div class="col text-center">
+            <p class="d-inline">Status: </p><p id="speechStatus" class="d-inline text-danger">not listening</p>
+            <p class="mt-4 mb-0">The speech that the microphone picked up will be outputted below in a text format. Some punctuation and grammar may also be applied for you.</p>
+            <p class="m-0 p-0">There is no need to remove the text from the text box after use, your next text-to-speech entry will automatically overwrite it.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+        <div class="col-10 text-center">
+            <textarea class="speechContent w-100"></textarea>
+        </div>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
