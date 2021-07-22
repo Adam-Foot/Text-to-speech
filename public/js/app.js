@@ -1,5 +1,7 @@
-const btn = document.querySelector('.talk');
-const btnStop = document.querySelector('.talkStop');
+const btn = document.querySelector('#talk');
+const btnStop = document.querySelector('#talkStop');
+const btnReset = document.querySelector('#textReset');
+
 const content = document.querySelector('.speechContent');
 const status = document.querySelector('#speechStatus');
 
@@ -37,4 +39,8 @@ btnStop.addEventListener('click', () => {
     document.getElementById("speechStatus").classList.add('text-danger');
     document.getElementById("speechStatus").innerHTML = "not listening"
     document.getElementById("speechStatus").classList.remove('text-success');
+});
+
+btnReset.addEventListener('click', () => {
+    content.textContent = "";
 });

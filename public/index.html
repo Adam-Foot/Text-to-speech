@@ -10,6 +10,9 @@
 <body>
 
 <div class="container mt-3">
+    <div class="alert alert-danger" role="alert">
+        Please be aware this project hasn't been updated since 2018. It may <b>not</b> work as intended.
+    </div>
     <div class="row justify-content-center mb-4">
         <div class="col text-center">
             <h5 class="display-4 mb-3">AF's Text-To-Speech v2</h5>
@@ -18,8 +21,9 @@
     </div>
     <div class="row justify-content-center">
         <div class="col text-center">
-            <button class="btn btn-warning talk mb-3">Talk</button>
-            <button class="btn btn-warning talkStop mb-3">Stop</button>
+            <button class="btn btn-warning mb-3" id="talk">Talk</button>
+            <button class="btn btn-warning mb-3" id="talkStop">Stop</button>
+            <button class="btn btn-danger mb-3" id="textReset">Reset</button>
         </div>
     </div>
     <div class="row justify-content-center mb-4">
@@ -30,7 +34,7 @@
     </div>
     <div class="row justify-content-center mb-4">
         <div class="col-10 text-center">
-            <textarea class="speechContent w-100"></textarea>
+            <textarea class="speechContent w-100" id="speechText"></textarea>
         </div>
     </div>
     <div class="row justify-content-center mb-4">
